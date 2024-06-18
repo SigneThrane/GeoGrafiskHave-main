@@ -1,0 +1,44 @@
+{
+  "name": "test",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "vite build",
+    "test:unit": "vitest",
+    "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
+    "dev": "vite",
+    "preview": "vite preview",
+    "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "bootstrap-icons": "^1.11.3",
+    "express": "^4.19.2",
+    "firebase": "^10.12.2",
+    "firebase-admin": "^12.1.1",
+    "leaflet": "^1.9.4",
+    "pinia": "^2.1.7",
+    "register-service-worker": "^1.7.2",
+    "vue": "^3.3.11",
+    "vue-i18n": "^9.13.1",
+    "vue-router": "^4.2.5",
+    "workbox-cacheable-response": "^7.1.0",
+    "workbox-expiration": "^7.1.0",
+    "workbox-precaching": "^7.1.0",
+    "workbox-routing": "^7.1.0",
+    "workbox-strategies": "^7.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.2",
+    "@vue/cli-plugin-pwa": "~5.0.0",
+    "@vue/test-utils": "^2.4.3",
+    "cypress": "^13.6.1",
+    "jsdom": "^23.0.1",
+    "sass": "^1.72.0",
+    "start-server-and-test": "^2.0.3",
+    "vite": "^5.0.10",
+    "vite-plugin-pwa": "^0.19.8",
+    "vitest": "^1.0.4"
+  },
+  "type": "module"
+}
