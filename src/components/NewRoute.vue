@@ -73,17 +73,17 @@ export default {
     const imageFile = ref(null); // Reaktiv variabel til billedfilen
     const audioFile = ref(null); // Reaktiv variabel til lydfilen
 
-    // Håndterer billedupload
+    // Håndterer billedupload, hvor der er en event som bliver udløst når brugerne klikker på den. 
     const handleImageUpload = (event) => {
       imageFile.value = event.target.files[0]; // Sætter den valgte billedfil
     };
 
     // Håndterer lydupload
     const handleAudioUpload = (event) => {
-      audioFile.value = event.target.files[0]; // Sætter den valgte lydfil
+      audioFile.value = event.target.files[0]; // Sætter den valgte lydfil, bruger den første fil valgt.
     };
 
-    // Funktion til at uploade filer til Firebase Storage
+    // Asynkron funktion til at uploade filer til Firebase Storage
     const uploadFile = async (file, folder) => {
       if (!file) return null; // Returnerer null hvis ingen fil er valgt
 
