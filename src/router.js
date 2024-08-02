@@ -5,6 +5,7 @@ import AudioTekst from './components/audioTekst.vue'
 import Map from './components/Map.vue'
 import LoginAdmin from './components/LoginAdmin.vue'
 import NewRoute from './components/NewRoute.vue'
+import Quiz from './components/Quiz.vue'
 
 
 
@@ -41,7 +42,11 @@ export default createRouter({
       name: 'NewRoute',
       component: NewRoute
     },
-
+    {
+      path: '/Quiz',
+      name: 'Quiz',
+      component: Quiz
+    },
 
   ]
 })

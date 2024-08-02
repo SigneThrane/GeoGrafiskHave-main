@@ -39,6 +39,12 @@
           <router-link to="/audioTekst">
             <button id="textButton" class="icon-button-text"></button> <!-- Tekstvisningsknap -->
           </router-link>
+          <router-link to="/Quiz">
+            <button id="quizButton" class="icon-button-quiz"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-award-fill" viewBox="0 0 16 16">
+  <path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z"/>
+  <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z"/>
+</svg></button> <!-- Quiz-knap -->
+          </router-link>
         </div>
       </div>
     </div>
@@ -250,6 +256,18 @@ h1, p {
   margin-top: 17%;
   margin-left: 17%;
   opacity: 50%;
+}
+
+#quizButton{
+  opacity: 50%;
+  background: none; 
+  border: none; 
+  outline: none; 
+  padding: 0; 
+  margin: 0; 
+  cursor: pointer; 
+  margin-top: 25%;
+  margin-left: 17%;
 }
 
 .router-link {
