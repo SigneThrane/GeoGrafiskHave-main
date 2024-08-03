@@ -1,13 +1,15 @@
 <template>
     <div class="quiz-wrapper">
-      <router-link to="/map">
-        <button class="back-button"> < </button> 
+      <router-link to="/audio">
+        <button class="back-button"> </button> 
       </router-link>
+     <div>
+      <h1 class="quiz-title">Quiz Om Kina</h1>
+     </div>
       <div class="image-container">
         <img src="../assets/featured.png" alt="Kina Billede" class="quiz-image">
       </div>
       <div class="quiz-container">
-        <h1>Quiz Om Kina</h1>
         <div v-if="currentQuestionIndex < questions.length">
           <h2>{{ questions[currentQuestionIndex].question }}</h2>
           <ul>
@@ -136,17 +138,36 @@
   button {
     display: block;
     width: 100%;
-    padding: 15px;
+    padding: 13px;
     background-color: #125F31;
     color: #fff;
     border: none;
-    border-radius: 5px;
-    font-size: 20px;
+    border-radius: 7px;
+    font-size: 17.5px;
     cursor: pointer;
   }
   
   button:hover {
     background-color: #0d4725;
   }
+  .back-button {
+  position: absolute;
+  top: 23px;
+  left: 18px;
+  background-color: #404040;
+  border: none;
+  border-radius: 50%;
+  height: 38px;
+  width: 39px;
+  cursor: pointer;
+  background-image: url("/src/assets/backButton.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22%;
+}
+
+.quiz-title {
+            margin-top: 20px; 
+        }
   </style>
   
