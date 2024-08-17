@@ -1,39 +1,48 @@
 <template>
-    <div class="quiz-wrapper">
-      <router-link to="/audio">
-        <button class="back-button"> </button> 
-      </router-link>
-     <div>
+  <div class="quiz-wrapper">
+    <router-link to="/audio">
+      <button class="back-button"> </button>
+    </router-link>
+
+    <div>
       <h1 class="quiz-title">Quiz Om Kina</h1>
-     </div>
-      <div class="image-container">
-        <img src="../assets/featured.png" alt="Kina Billede" class="quiz-image">
-      </div>
-      <div class="quiz-container">
-        <div v-if="currentQuestionIndex < questions.length">
-          <h2>{{ questions[currentQuestionIndex].question }}</h2>
-          <ul>
-            <li v-for="(option, index) in questions[currentQuestionIndex].options" :key="index">
-              <input 
-                type="radio" 
-                :id="`option-${index}`" 
-                :value="option" 
-                v-model="selectedAnswer"
-              >
-              <label :for="`option-${index}`">{{ option }}</label>
-            </li>
-          </ul>
-          <button @click="submitAnswer">Næste</button>
-        </div>
-        <div v-else>
-          <h2>Færdig!!</h2>
-          <p>Du fik {{ score }} rigtige ud af {{ questions.length }}</p>
-        </div>
+    </div>
+
+    <div class="image-container">
+      <img src="../assets/featured.png" alt="Kina Billede" class="quiz-image">
+    </div>
+ 
+    <div class="quiz-container">
+      <div v-if="currentQuestionIndex < questions.length">
+
+        <h2>{{ questions[currentQuestionIndex].question }}</h2>
+
+        <ul>
+          <li v-for="(option, index) in questions[currentQuestionIndex].options" :key="index">
+
+            <input 
+              type="radio" 
+              :id="`option-${index}`" 
+              :value="option" 
+              v-model="selectedAnswer"
+            >
+            
+            <label :for="`option-${index}`">{{ option }}</label>
+          </li>
+        </ul>
+
+        <button @click="submitAnswer">Næste</button>
+      </div>  
+
+      <div v-else>
+        <h2>Færdig!!</h2>
+        <p>Du fik {{ score }} rigtige ud af {{ questions.length }}</p>
       </div>
     </div>
-  </template>
-  
-  <script setup>
+  </div>
+</template>
+
+<script setup>
   import { ref } from 'vue';
   
   const questions = ref([
@@ -59,15 +68,18 @@
     },
     {
       question: 'Hvilket hav grænser op til det østlige Kina?',
-      options: ['Det Kaspiske Hav', ' Det Arabiske Hav', 'Det Røde Hav', 'Det Østkinesiske Hav'],
+      options: ['Det Kaspiske Hav', 'Det Arabiske Hav', 'Det Røde Hav', 'Det Østkinesiske Hav'],
       answer: 'Det Østkinesiske Hav',
     },
   ]);
-  
+
   const currentQuestionIndex = ref(0);
+
   const selectedAnswer = ref('');
+
   const score = ref(0);
   
+
   const submitAnswer = () => {
     if (selectedAnswer.value === questions.value[currentQuestionIndex.value].answer) {
       score.value++;
@@ -75,7 +87,7 @@
     selectedAnswer.value = '';
     currentQuestionIndex.value++;
   };
-  </script>
+</script>
   
   <style scoped>
   .quiz-wrapper {
