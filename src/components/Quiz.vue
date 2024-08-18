@@ -1,41 +1,50 @@
 <template>
+  <!-- Tilbage knap ved vue router -->
   <div class="quiz-wrapper">
     <router-link to="/audio">
       <button class="back-button"> </button>
     </router-link>
 
     <div>
+        <!-- Titel til quiz -->
       <h1 class="quiz-title">Quiz Om Kina</h1>
     </div>
 
     <div class="image-container">
+        <!-- image -->
       <img src="../assets/featured.png" alt="Kina Billede" class="quiz-image">
     </div>
  
     <div class="quiz-container">
+        <!-- v-if (boolean), hvor langt er vi, mængde spørgsmål, ikke længere true -->
       <div v-if="currentQuestionIndex < questions.length">
-
+       <!-- indsat data i {{ }}, question i script, currentQuestionIndex hvor er vi, .question kalder the aktuelle objekt   -->
         <h2>{{ questions[currentQuestionIndex].question }}</h2>
 
         <ul>
+            <!-- v-for (loop), option: mulighed i listen, index: angiver placering -->
           <li v-for="(option, index) in questions[currentQuestionIndex].options" :key="index">
-
+        
+            <!-- input: radio knap, id: tilknyttes label, value: aktuelle mulighed, v-model: tilknyttet script og muligheder -->
             <input 
               type="radio" 
               :id="`option-${index}`" 
               :value="option" 
               v-model="selectedAnswer"
             >
-            
+            <!-- Binder til den rigtig radio knap, :for="option-${index}": matcher id'en, option: aktuelle mulighed  -->
             <label :for="`option-${index}`">{{ option }}</label>
           </li>
         </ul>
-
+        <!-- vue.js click metode, kalder script funktion -->
         <button @click="submitAnswer">Næste</button>
       </div>  
 
+        <!-- v-else tjekker om der flere spørgsmål tilbage, hvis den ikke er sand -->
       <div v-else>
         <h2>Færdig!!</h2>
+
+          <!-- script score, viser mængden af spørgsmål -->
         <p>Du fik {{ score }} rigtige ud af {{ questions.length }}</p>
       </div>
     </div>
@@ -43,13 +52,15 @@
 </template>
 
 <script setup>
+ // Henter funktion ref i vue.js bibliotekt
   import { ref } from 'vue';
   
+   // variabel question, refernce til en liste af objects
   const questions = ref([
     {
-      question: 'Hvad er hovedstaden i Kina?',
-      options: ['Shanghai', 'Beijing', 'Guangzhou', 'Shenzhen'],
-      answer: 'Beijing',
+      question: 'Hvad er hovedstaden i Kina?', // String
+      options: ['Shanghai', 'Beijing', 'Guangzhou', 'Shenzhen'], // Array af strings
+      answer: 'Beijing', // String
     },
     {
       question: 'Hvilket kendt monument strækker sig over 21.000 km i Kina?',
@@ -73,19 +84,29 @@
     },
   ]);
 
+ // const: forbliver det samme, ref(0): start værdi 0 (reaktiv varibel)
   const currentQuestionIndex = ref(0);
 
+ // Gemmer svar, tom string, bliver opdateret hvis værdien ændres.
   const selectedAnswer = ref('');
 
+ // start værdi 0
   const score = ref(0);
   
-
+  // Tjekker brugerens svar ved klik
   const submitAnswer = () => {
+      // selectedAnswer.value: indeholder det svar brugeren har valgt. 
+      // questions.value[currentQuestionIndex.value].answer er det korrekte svar for det nuværende spørgsmål.
+      // hvis ens vil den være true og kører if funktion  
     if (selectedAnswer.value === questions.value[currentQuestionIndex.value].answer) {
-      score.value++;
+      // øger score med 1
+      score.value++; 
     }
-    selectedAnswer.value = '';
-    currentQuestionIndex.value++;
+      // Nulstiller svar til en tom string, så det næste spørgsmål kan køres
+    selectedAnswer.value = ''; 
+
+      // Går videre til næste spørgsmål ved at øge index med en.
+    currentQuestionIndex.value++; 
   };
 </script>
   
