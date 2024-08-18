@@ -16,23 +16,24 @@
     </div>
  
     <div class="quiz-container">
-        <!-- v-if (boolean), hvor langt er vi, mængde spørgsmål, ikke længere true -->
+        <!-- v-if (boolean), hvor langt er vi, question.length: mængde spørgsmål, mindre end, ikke længere true -->
       <div v-if="currentQuestionIndex < questions.length">
-       <!-- indsat data i {{ }}, question i script, currentQuestionIndex hvor er vi, .question kalder the aktuelle objekt   -->
+       <!-- indsat data i {{ }}, question i script, currentQuestionIndex hvor er vi, .question henter og vise det aktuelle spørgsmål fra listen  -->
         <h2>{{ questions[currentQuestionIndex].question }}</h2>
 
         <ul>
             <!-- v-for (loop), option: mulighed i listen, index: angiver placering -->
           <li v-for="(option, index) in questions[currentQuestionIndex].options" :key="index">
         
-            <!-- input: radio knap, id: tilknyttes label, value: aktuelle mulighed, v-model: tilknyttet script og muligheder -->
+            <!-- input: radio knap, id: giver id og tilknytter til det rigtige label, value: sætter værdi til knap og sender værdi til selectedAnswer
+             v-model: binder knappen til selectedanswer, holder styr på mulighederne der er blivet valgt -->
             <input 
               type="radio" 
               :id="`option-${index}`" 
               :value="option" 
               v-model="selectedAnswer"
             >
-            <!-- Binder til den rigtig radio knap, :for="option-${index}": matcher id'en, option: aktuelle mulighed  -->
+            <!-- label bindes med ":for="`option-${index}" og matcher ID. option viser aktuelle muligheder, så brugeren ved hvilke knapper er hvad  -->
             <label :for="`option-${index}`">{{ option }}</label>
           </li>
         </ul>
