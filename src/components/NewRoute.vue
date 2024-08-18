@@ -75,7 +75,7 @@ export default {
 
     // Håndterer billedupload, hvor der er en event som bliver udløst når brugerne klikker på den. 
     const handleImageUpload = (event) => {
-      imageFile.value = event.target.files[0]; // Sætter den valgte billedfil
+      imageFile.value = event.target.files[0]; // Sætter den valgte billedfil,  bruger den første fil valgt.
     };
 
     // Håndterer lydupload
